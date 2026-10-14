@@ -1,0 +1,294 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Petualangan Peluang</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght\@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght\@400;500;600;700;800&display=swap');
+
+:root{--g:#176b4d;--mint:#eaf8ef;--line:#d7eadc;--ink:#17352b}
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:'Nunito','Segoe UI',sans-serif;background:#f4faf5;color:var(--ink);font-size:16px;letter-spacing:.05px}
+
+h1,h2,h3,h4,button,nav{font-family:'Plus Jakarta Sans','Nunito','Segoe UI',sans-serif}
+
+h1,h2,h3{letter-spacing:-.6px}
+
+p{line-height:1.7}
+
+button{font-size:13px;letter-spacing:.1px;box-shadow:0 3px 8px #176b4d12;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+
+button:hover{box-shadow:0 6px 14px #176b4d20}
+
+input,textarea{font-family:'Nunito','Segoe UI',sans-serif;font-size:15px}
+
+header{padding:30px max(20px,calc((100% - 1100px)/2));background:linear-gradient(120deg,#104d3a,#299366);color:white}header small{letter-spacing:2px;color:#d9f7dc}header h1{font-family:'Plus Jakarta Sans','Nunito','Segoe UI',sans-serif;font-size:clamp(30px,5vw,46px);font-weight:800;line-height:1.15;margin:12px 0;letter-spacing:-1.2px}header p{line-height:1.6;max-width:700px;color:#e4f6e8}nav{position:sticky;top:0;z-index:5;background:#ffffffed;border-bottom:1px solid var(--line);display:flex;justify-content:center;flex-wrap:wrap;gap:7px;padding:12px}button{border:0;border-radius:12px;padding:11px 15px;background:var(--g);color:white;font-weight:bold;cursor:pointer}nav button{background:#edf6ef;color:#34664f}nav button.on,nav button:hover{background:var(--g);color:white}main{max-width:1100px;margin:25px auto;padding:0 16px}.page{display:none}.page.active{display:block}.panel{background:white;border:1px solid var(--line);border-radius:23px;padding:clamp(18px,3vw,30px);margin-bottom:18px;box-shadow:0 8px 26px #1d624010}.hero{padding:clamp(28px,5vw,55px);border-radius:26px;background:linear-gradient(130deg,#dff7e3,#f5ffe9);display:grid;grid-template-columns:1.4fr .6fr;gap:15px;align-items:center}.hero h2{font-family:'Plus Jakarta Sans','Nunito','Segoe UI',sans-serif;font-size:clamp(30px,4vw,46px);font-weight:800;line-height:1.12;letter-spacing:-1.5px;margin:10px 0}.hero p,.muted{line-height:1.65;color:#668176}.hero-art{text-align:center;font-size:clamp(65px,10vw,115px)}.eyebrow{font-size:12px;letter-spacing:1.5px;color:#32845c;font-weight:bold;text-transform:uppercase}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px}.tile,.topic{padding:17px;border:1px solid var(--line);border-radius:16px;background:#fbfffb;margin:12px 0}.tile p{color:#668176;line-height:1.65}.tile h3,.topic h3{font-weight:800}.emoji{font-size:27px}label{font-weight:bold;font-size:14px;display:block;margin:10px 0 7px}input,textarea{font:inherit;width:100%;border:1px solid #c9dfcf;border-radius:12px;padding:12px;background:#fcfffc}textarea{min-height:90px;resize:vertical}.notice,.feedback,.success{padding:14px;border-radius:13px;background:#eef8ef;line-height:1.6;margin:12px 0}.notice{border-left:4px solid #88c65c}.formula{text-align:center;background:#eaf8e8;padding:13px;border-radius:12px;font-size:18px;font-weight:bold}.question{padding:19px;background:#f7fcf8;border:1px solid var(--line);border-radius:17px;margin-top:17px}.pill{display:inline-block;background:#e3f4e5;color:#276747;padding:7px 11px;border-radius:20px;font-size:12px;font-weight:bold}.answer{display:block;width:100%;text-align:left;margin:8px 0;background:white;color:var(--ink);border:1px solid #cde3d2}.answer:hover{background:#f2fbf3}.correct{background:#d8f4dc!important;border-color:#4baf68!important}.wrong{background:#ffe8e2!important;border-color:#df8873!important}.wheel{width:min(260px,70vw);height:min(260px,70vw);border-radius:50%;margin:20px auto;background:conic-gradient(#b9ed84 0 36deg,#f7cf72 36deg 72deg,#56b88a 72deg 108deg,#d9f2bc 108deg 144deg,#32996b 144deg 180deg,#b9ed84 180deg 216deg,#f7cf72 216deg 252deg,#56b88a 252deg 288deg,#d9f2bc 288deg 324deg,#32996b 324deg);border:9px solid white;box-shadow:0 8px 24px #194e2c22;display:flex;align-items:center;justify-content:center;font-size:60px;transition:transform .72s cubic-bezier(.08,.82,.16,1);will-change:transform}.center{text-align:center}.dice{display:inline-block;font-size:85px;margin:14px;transform-origin:center;will-change:transform}.dice.rolling{animation:diceRoll .18s linear infinite}@keyframes diceRoll{0%{transform:rotate(0deg) scale(1)}25%{transform:rotate(90deg) scale(1.12)}50%{transform:rotate(180deg) scale(1)}75%{transform:rotate(270deg) scale(1.12)}100%{transform:rotate(360deg) scale(1)}}.stats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.stat{background:#e8f7e9;padding:9px 13px;border-radius:20px;color:#276747}.submitbox{margin-top:20px;padding:18px;border:1px dashed #7ab88b;background:#f2fbf2;border-radius:16px}.score{position:fixed;right:15px;bottom:15px;background:#174f3c;color:white;border-radius:15px;padding:13px 16px;z-index:4}table{width:100%;border-collapse:collapse;margin-top:15px}td,th{text-align:left;padding:10px;border-bottom:1px solid var(--line)}th{background:#eff8f0}@media(max-width:650px){.hero{grid-template-columns:1fr}.hero-art{order:-1}nav{justify-content:flex-start}}
+
+</style></head><body>
+
+<header><small>✦ MEDIA BELAJAR INTERAKTIF · KELAS VIII</small><h1>Petualangan Peluang 🌿</h1><p>Jelajahi kemungkinan, pecahkan tantangan, dan kumpulkan poin. Setiap aktivitas bisa disubmit langsung. Semua hasil terkumpul di Rekap Hasil Guru, lalu guru dapat mengunduh satu laporan Word lengkap.</p></header>
+
+<nav id="menu"><button class="on" data-page="home">⌂ Beranda</button><button data-page="materi">▤ Materi</button><button data-page="spin">◉ Spin Wheel</button><button data-page="dadu">⚄ Eksperimen Dadu</button><button data-page="detective">⌕ Math Detective</button><button data-page="refleksi">✎ Refleksi</button><button data-page="guru">▦ Rekap Hasil</button></nav><main>
+
+<section id="home" class="page active"><div class="hero"><div><div class="eyebrow">Ready, set, explore!</div><h2>Belajar peluang jadi petualangan</h2><p>Baca konsep, putar roda soal, lakukan eksperimen dadu, lalu selesaikan misi Math Detective. Jangan lupa submit hasil setiap aktivitas.</p><button onclick="buka('materi')">Mulai petualangan →</button></div><div class="hero-art">🎲🌱</div></div><div class="panel"><h2>Profil penjelajah</h2><p class="muted">Masukkan nama agar hasil submit tercatat dengan benar.</p><label>Nama lengkap</label><input id="nama" placeholder="Tulis nama lengkap..." oninput="simpanNama()"><div class="grid" style="margin-top:18px"><div class="tile"><div class="emoji">📚</div><h3>01 · Pelajari</h3><p>Pahami konsep dan rumus peluang.</p></div><div class="tile"><div class="emoji">🎡</div><h3>02 · Spin Wheel</h3><p>Jawab 10 soal tanpa nomor berulang.</p></div><div class="tile"><div class="emoji">🎲</div><h3>03 · Eksperimen</h3><p>Amati hasil percobaan dadu.</p></div><div class="tile"><div class="emoji">🕵️</div><h3>04 · Math Detective</h3><p>Pecahkan misi logika peluang.</p></div></div></div></section>
+
+<section id="materi" class="page"><div class="panel"><div class="eyebrow">Knowledge base</div><h2>📚 Materi Peluang</h2><div class="notice">Pelajari materi berikut secara berurutan. Kamu bisa membacanya kembali kapan saja.</div><div id="isiMateri"></div></div></section>
+
+<section id="spin" class="page"><div class="panel"><div class="eyebrow">Aktivitas 01</div><h2>🎡 Spin Wheel Challenge</h2><p class="muted">Jawab 10 soal. Setiap jawaban benar bernilai 10 poin.</p><div class="center"><div id="wheel" class="wheel">🎡</div><button id="putarBtn" onclick="mulaiSpin()">Putar roda</button><p id="spinProgress" class="muted">10 soal tersedia</p></div><div id="spinSoal"></div><div class="submitbox"><h3>📄 Submit hasil Spin Wheel</h3><p class="muted">Setiap usaha membawamu selangkah lebih dekat pada pemahaman. Terus mencoba dan percaya pada proses belajarmu! 🌱</p><button onclick="submitAktivitas('Spin Wheel',spinScore,'spinSubmit','Soal selesai: '+(10-nomorTersisa.length)+'/10')">Submit hasil</button><div id="spinSubmit"></div></div></div></section>
+
+<section id="dadu" class="page"><div class="panel"><div class="eyebrow">Aktivitas 02</div><h2>🎲 Eksperimen Lempar Dadu</h2><p class="muted">Lempar dadu, jawab pertanyaan, dan amati frekuensi hasilnya.</p><div class="center"><div id="dice" class="dice">⚀</div><button onclick="lemparDadu()">Lempar dadu</button><p id="hasilDadu">Belum ada percobaan.</p><div class="stats"><span class="stat">Percobaan: <b id="nTotal">0</b></span><span class="stat">Genap: <b id="nGenap">0</b></span><span class="stat">Ganjil: <b id="nGanjil">0</b></span></div></div><div id="pertanyaanDadu"></div><div class="submitbox"><h3>📄 Submit hasil eksperimen</h3><p class="muted">Amati hasilnya, temukan polanya, dan jadilah penjelajah yang teliti! 🎲</p><button onclick="submitAktivitas('Eksperimen Dadu',diceScore,'diceSubmit','Lemparan: '+diceTotal+'; genap: '+diceEven+'; ganjil: '+diceOdd+'; riwayat: '+diceHistory.join(', '))">Submit hasil</button><div id="diceSubmit"></div></div></div></section>
+
+<section id="detective" class="page"><div class="panel"><div class="eyebrow">Aktivitas 03 · Mission mode</div><h2>🕵️ Math Detective</h2><p class="muted">Pecahkan kasus dan temukan jawaban paling masuk akal.</p><div id="tantanganSoal" class="question"></div><div class="submitbox"><h3>📄 Submit laporan detektif</h3><p class="muted">Detektif hebat bukan hanya menemukan jawaban, tetapi juga berani berpikir dan mencoba! 🕵️</p><button onclick="submitAktivitas('Math Detective',detectiveScore,'detectiveSubmit','Kasus tersedia: '+challenge.length)">Submit hasil</button><div id="detectiveSubmit"></div></div></div></section>
+
+<section id="refleksi" class="page"><div class="panel"><div class="eyebrow">Aktivitas 04</div><h2>✍️ Refleksi Pembelajaran</h2><p class="muted">Ceritakan pemahamanmu setelah menjelajahi materi peluang.</p><div class="grid"><div><label>Hal yang sudah saya pahami</label><textarea id="r1" placeholder="Saya memahami bahwa..."></textarea></div><div><label>Hal yang masih membingungkan</label><textarea id="r2" placeholder="Saya masih ingin memahami..."></textarea></div><div><label>Hasil pengamatan dadu</label><textarea id="r3" placeholder="Saya mengamati..."></textarea></div><div><label>Strategi belajar yang membantu</label><textarea id="r4" placeholder="Saya belajar dengan cara..."></textarea></div><div><label>Kesimpulan</label><textarea id="r5"></textarea></div><div><label>Target belajar selanjutnya</label><textarea id="r6"></textarea></div></div><div class="submitbox"><h3>📄 Submit refleksi</h3><p class="muted">Setiap hal yang kamu pelajari hari ini adalah bekal untuk melangkah lebih jauh. Bangga pada prosesmu! ✨</p><button onclick="submitRefleksi()">Submit hasil</button><div id="hasilRefleksi"></div></div></div></section>
+
+<section id="guru" class="page"><div class="panel"><div class="eyebrow">Teacher dashboard</div><h2>📊 Rekap Hasil Siswa</h2><p class="muted">Setiap submit aktivitas akan tercatat di komputer yang menjalankan server.</p><div class="grid"><button type="button" id="refreshRekapBtn" onclick="ambilSkor(true)">↻ Refresh rekap sekarang</button><button type="button" onclick="unduhRekapWord()">📄 Unduh Rekap Word</button><button type="button" style="background:#a83c32" onclick="mulaiSesiBaru()">🗑 Mulai sesi baru (hapus rekap lama)</button></div><p class="muted">Laporan Word menggabungkan semua aktivitas yang sudah disubmit oleh siswa. Gunakan tombol merah hanya saat ingin memulai sesi/pembelajaran baru dan menghapus seluruh rekap lama.</p><p id="waktuRefresh" class="muted" aria-live="polite">Rekap belum diperbarui.</p><div id="dataGuru"></div></div></section></main><div class="score">🏆 Poin: <b id="skor">0</b></div>
+
+<script>
+
+const materi=[["🎯 Pengertian Peluang", "Peluang adalah ukuran seberapa besar kemungkinan suatu kejadian terjadi.", "0 ≤ P(A) ≤ 1"], ["🔎 Percobaan, Ruang Sampel, dan Titik Sampel", "Percobaan adalah kegiatan yang hasilnya dapat diamati. Ruang sampel (S) adalah himpunan semua hasil yang mungkin. Setiap hasil tunggal disebut titik sampel.", "S = {1, 2, 3, 4, 5, 6} → n(S) = 6"], ["🧩 Kejadian", "Kejadian adalah kumpulan satu atau lebih titik sampel yang menjadi perhatian.", "Contoh: A = {2, 4, 6}, sehingga n(A) = 3."], ["🪙 Ruang Sampel pada Koin", "Pada pelemparan satu koin ada dua hasil: angka dan gambar. Jika koin seimbang, peluang masing-masing adalah 1/2.", "S = {angka, gambar}"], ["🎲 Peluang Teoretik", "Jika semua hasil memiliki kesempatan yang sama, peluang dihitung dari banyak hasil yang mendukung dibandingkan seluruh hasil yang mungkin.", "P(A) = n(A) / n(S)"], ["🌱 Peluang Empirik", "Peluang empirik diperoleh dari hasil percobaan yang benar-benar dilakukan.", "P(A) = frekuensi kejadian A / banyak percobaan"], ["📊 Frekuensi Relatif dan Frekuensi Harapan", "Semakin banyak percobaan, peluang empirik cenderung mendekati peluang teoretik. Frekuensi harapan = peluang × banyak percobaan.", "Fh = P(A) × n"], ["🍀 Rentang Nilai Peluang", "Peluang 0 berarti mustahil, peluang antara 0 dan 1 berarti mungkin, dan peluang 1 berarti pasti.", "0 ≤ P(A) ≤ 1"], ["🔄 Peluang Komplemen", "Peluang A dan peluang komplemennya jika digabung selalu berjumlah 1.", "P(Aᶜ) = 1 − P(A)"], ["🎲 Dua Dadu", "Jika dua dadu dilempar bersama, banyak pasangan hasil adalah 6 × 6 = 36.", "Contoh jumlah mata dadu 2 hanya terjadi pada (1,1), sehingga peluangnya 1/36."], ["🧠 Langkah Menyelesaikan Soal Peluang", "Tentukan percobaan, ruang sampel, kejadian, banyak hasil yang mendukung, gunakan rumus, lalu periksa apakah hasil berada antara 0 dan 1.", ""]],spinQuestions=[{"q": "Peluang muncul angka 6 pada sebuah dadu adalah ...", "a": ["1/2", "1/3", "1/6", "1"], "c": 2, "e": "Ada 6 hasil yang mungkin dan hanya 1 berupa angka 6, jadi P = 1/6."}, {"q": "Peluang muncul bilangan genap pada sebuah dadu adalah ...", "a": ["1/6", "1/3", "1/2", "2/3"], "c": 2, "e": "Bilangan genap adalah 2, 4, dan 6. Jadi P = 3/6 = 1/2."}, {"q": "Sebuah koin dilempar satu kali. Peluang muncul gambar adalah ...", "a": ["0", "1/4", "1/2", "1"], "c": 2, "e": "Ada dua hasil yang mungkin, yaitu angka dan gambar. Jadi peluang gambar = 1/2."}, {"q": "Jika P(A) = 0, maka kejadian A adalah ...", "a": ["Pasti terjadi", "Mungkin terjadi", "Tidak mungkin terjadi", "Selalu terjadi"], "c": 2, "e": "Peluang 0 berarti kejadian tersebut mustahil terjadi."}, {"q": "Jika P(A) = 1, maka kejadian A adalah ...", "a": ["Tidak mungkin", "Mungkin", "Pasti terjadi", "Tidak dapat ditentukan"], "c": 2, "e": "Peluang 1 berarti kejadian tersebut pasti terjadi."}, {"q": "Sebuah dadu dilempar satu kali. Banyak titik sampelnya adalah ...", "a": ["4", "5", "6", "8"], "c": 2, "e": "Ruang sampel dadu adalah {1,2,3,4,5,6}, sehingga ada 6 titik sampel."}, {"q": "Peluang muncul bilangan prima pada sebuah dadu adalah ...", "a": ["1/6", "1/3", "1/2", "2/3"], "c": 2, "e": "Bilangan prima pada dadu adalah 2, 3, dan 5. Jadi P = 3/6 = 1/2."}, {"q": "Jika peluang hujan adalah 0,3, maka peluang tidak hujan adalah ...", "a": ["0,3", "0,5", "0,7", "1,3"], "c": 2, "e": "P(Aᶜ) = 1 - P(A) = 1 - 0,3 = 0,7."}, {"q": "Jika sebuah dadu dilempar 30 kali dan angka 6 muncul 5 kali, peluang empiriknya adalah ...", "a": ["1/5", "1/6", "1/3", "1/2"], "c": 1, "e": "Peluang empirik = frekuensi kejadian / banyak percobaan = 5/30 = 1/6."}, {"q": "Dua dadu dilempar bersama. Banyak pasangan hasil yang mungkin adalah ...", "a": ["12", "24", "36", "42"], "c": 2, "e": "Setiap dadu memiliki 6 kemungkinan, sehingga 6 × 6 = 36 pasangan hasil."}],diceQuestions=[{"q": "Hasil lemparan dadumu adalah 1. Angka 1 termasuk bilangan ...", "a": ["Genap", "Ganjil", "Prima dan genap", "Bukan bilangan"], "c": 1, "e": "Hasil dadumu adalah 1. Karena 1 tidak habis dibagi 2, maka 1 adalah bilangan ganjil."}, {"q": "Hasil lemparan dadumu adalah 2. Berapa peluang teoretik muncul angka 2 pada satu lemparan dadu?", "a": ["1/2", "1/3", "1/6", "2/6"], "c": 2, "e": "Dadu memiliki 6 sisi dan hanya satu sisi bernomor 2, sehingga P(2) = 1/6."}, {"q": "Hasil lemparan dadumu adalah 3. Angka 3 termasuk bilangan ...", "a": ["Prima", "Komposit", "Genap", "Bukan bilangan"], "c": 0, "e": "Hasil dadumu adalah 3. Bilangan 3 adalah bilangan prima karena hanya memiliki faktor 1 dan 3."}, {"q": "Hasil lemparan dadumu adalah 4. Angka 4 termasuk bilangan ...", "a": ["Ganjil", "Genap", "Prima", "Bukan bilangan"], "c": 1, "e": "Hasil dadumu adalah 4. Karena 4 habis dibagi 2, maka 4 adalah bilangan genap."}, {"q": "Hasil lemparan dadumu adalah 5. Berapa peluang teoretik muncul angka 5 pada satu lemparan dadu?", "a": ["1/5", "1/6", "1/2", "5/6"], "c": 1, "e": "Dadu memiliki 6 sisi dan hanya satu sisi bernomor 5, sehingga P(5) = 1/6."}, {"q": "Hasil lemparan dadumu adalah 6. Angka 6 termasuk bilangan ...", "a": ["Ganjil", "Genap", "Prima", "Bukan bilangan"], "c": 1, "e": "Hasil dadumu adalah 6. Karena 6 habis dibagi 2, maka 6 adalah bilangan genap."}],challenge=[{"q": "Nilai peluang selalu berada pada ...", "a": ["0 sampai 1", "-1 sampai 1", "1 sampai 2", "0 sampai 10"], "c": 0, "e": "Peluang memenuhi 0 ≤ P(A) ≤ 1."}, {"q": "Kejadian pasti memiliki peluang ...", "a": ["0", "1/4", "1/2", "1"], "c": 3, "e": "Kejadian pasti memiliki peluang 1."}, {"q": "Pada dadu, kejadian muncul bilangan kurang dari 7 merupakan kejadian ...", "a": ["Mustahil", "Mungkin", "Pasti", "Tidak dapat ditentukan"], "c": 2, "e": "Semua hasil dadu 1 sampai 6 kurang dari 7, sehingga kejadian ini pasti."}, {"q": "Peluang muncul angka lebih dari 6 pada dadu adalah ...", "a": ["0", "1/6", "1/2", "1"], "c": 0, "e": "Tidak ada sisi dadu bernomor lebih dari 6, sehingga peluangnya 0."}];
+
+let nama=sessionStorage.getItem('namaPeluang')||'',skor=0,spinScore=0,diceScore=0,detectiveScore=0,nomorTersisa=[0,1,2,3,4,5,6,7,8,9],nomorSedang=-1,spinAnswered=false,challengeIndex=0,challengeAnswered=false,diceTotal=0,diceEven=0,diceOdd=0,diceHistory=[],answerLog=[],diceRolling=false;
+
+document.getElementById('nama').value=nama;
+
+function simpanNama(){nama=document.getElementById('nama').value.trim();sessionStorage.setItem('namaPeluang',nama)}
+
+function buka(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('#menu button').forEach(x=>x.classList.toggle('on',x.dataset.page===id));window\.scrollTo(0,0);if(id==='guru')ambilSkor(true)}
+
+document.querySelectorAll('#menu button').forEach(b=>b.onclick=()=>buka(b.dataset.page));
+
+function tambahSkor(n,jenis){skor+=n;document.getElementById('skor').textContent=skor;if(jenis==='spin')spinScore+=n;if(jenis==='dice')diceScore+=n;if(jenis==='detective')detectiveScore+=n}
+
+document.getElementById('isiMateri').innerHTML=materi.map(m=>'<div class="topic"><h3>'+m[0]+'</h3><p>'+m[1]+'</p>'+(m[2]?'<div class="formula">'+m[2]+'</div>':'')+'</div>').join('');
+
+function mulaiSpin(){if(!nama){alert('Isi nama terlebih dahulu di Beranda.');buka('home');return}if(!nomorTersisa.length){document.getElementById('spinProgress').textContent='Semua soal selesai. Silakan submit hasil.';return}document.getElementById('putarBtn').disabled=true;let idx=Math.floor(Math.random()*nomorTersisa.length);nomorSedang=nomorTersisa.splice(idx,1)[0];let w=document.getElementById('wheel');w\.style.transition='none';w\.style.transform='rotate(0deg)';void w\.offsetWidth;w\.style.transition='transform .72s cubic-bezier(.08,.82,.16,1)';w\.style.transform='rotate('+(2160+Math.random()*720)+'deg)';spinAnswered=false;document.getElementById('spinProgress').textContent=(10-nomorTersisa.length)+' dari 10 soal selesai';setTimeout(()=>{let q=spinQuestions[nomorSedang];document.getElementById('spinSoal').innerHTML='<div class="question"><span class="pill">Soal '+(nomorSedang+1)+'</span><h3>'+q.q+'</h3>'+q.a.map((a,i)=>'<button class="answer" onclick="jawabSpin(this,'+i+')">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('')+'<div id="spinFeedback" class="feedback" style="display:none"></div></div>'},760)}
+
+function jawabSpin(btn,i){if(spinAnswered)return;spinAnswered=true;let q=spinQuestions[nomorSedang],bs=document.querySelectorAll('#spinSoal .answer');bs.forEach(b=>b.disabled=true);let ok=i===q.c;btn.classList.add(ok?'correct':'wrong');bs[q.c].classList.add('correct');if(ok)tambahSkor(10,'spin');answerLog.push({aktivitas:'Spin Wheel',nomor:nomorSedang+1,soal:q.q,jawabanDipilih:q.a[i],jawabanBenar:q.a[q.c],benar:ok,penjelasan:q.e});let f=document.getElementById('spinFeedback');f.style.display='block';f.innerHTML=(ok?'🎉 Benar! +10 poin. ':'🌱 Belum tepat. ')+q.e;let n=document.createElement('button');n.style.marginTop='12px';n.textContent=nomorTersisa.length?'Soal berikutnya →':'Semua soal selesai';n.onclick=()=>{spinAnswered=false;document.getElementById('spinSoal').innerHTML='';document.getElementById('putarBtn').disabled=!nomorTersisa.length;document.getElementById('spinProgress').textContent=(10-nomorTersisa.length)+' dari 10 soal selesai'+(!nomorTersisa.length?' — siap submit':'')};f.parentElement.appendChild(n)}
+
+const faces=['⚀','⚁','⚂','⚃','⚄','⚅'];
+
+function lemparDadu(){if(!nama){alert('Isi nama terlebih dahulu di Beranda.');buka('home');return}if(diceRolling)return;diceRolling=true;let d=document.getElementById('dice'),n=0;d.classList.add('rolling');let t=setInterval(()=>{d.textContent=faces[Math.floor(Math.random()*6)];n++;if(n>=18){clearInterval(t);let h=Math.floor(Math.random()*6)+1;d.textContent=faces[h-1];d.classList.remove('rolling');diceRolling=false;diceTotal++;if(h%2===0)diceEven++;else diceOdd++;diceHistory.push(h);document.getElementById('hasilDadu').textContent='Hasil lemparan: '+h;document.getElementById('nTotal').textContent=diceTotal;document.getElementById('nGenap').textContent=diceEven;document.getElementById('nGanjil').textContent=diceOdd;buatPertanyaanDadu(h)}},55)}
+
+function buatPertanyaanDadu(h){let q=diceQuestions[h-1];document.getElementById('pertanyaanDadu').innerHTML='<div class="question"><span class="pill">Hasil dadu '+h+'</span><h3>'+q.q+'</h3>'+q.a.map((a,i)=>'<button class="answer" onclick="jawabDadu(this,'+i+')">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('')+'<div id="diceFeedback" class="feedback" style="display:none"></div></div>'}
+
+function jawabDadu(btn,i){let bs=document.querySelectorAll('#pertanyaanDadu .answer');if([...bs].some(b=>b.disabled))return;bs.forEach(b=>b.disabled=true);let q=diceQuestions[diceHistory[diceHistory.length-1]-1],ok=i===q.c;btn.classList.add(ok?'correct':'wrong');bs[q.c].classList.add('correct');if(ok)tambahSkor(10,'dice');answerLog.push({aktivitas:'Eksperimen Dadu',nomor:diceTotal,soal:q.q,jawabanDipilih:q.a[i],jawabanBenar:q.a[q.c],benar:ok,penjelasan:q.e,hasilDadu:diceHistory[diceHistory.length-1]});let f=document.getElementById('diceFeedback');f.style.display='block';f.innerHTML=(ok?'🎉 Benar! +10 poin. ':'🌱 Belum tepat. ')+q.e}
+
+function tampilChallenge(){let q=challenge[challengeIndex];challengeAnswered=false;document.getElementById('tantanganSoal').innerHTML='<span class="pill">Kasus '+(challengeIndex+1)+' dari '+challenge.length+'</span><h3>'+q.q+'</h3>'+q.a.map((a,i)=>'<button class="answer" onclick="jawabChallenge(this,'+i+')">'+String.fromCharCode(65+i)+'. '+a+'</button>').join('')+'<div id="challengeFeedback" class="feedback" style="display:none"></div>'}
+
+function jawabChallenge(btn,i){if(challengeAnswered)return;challengeAnswered=true;let q=challenge[challengeIndex],bs=document.querySelectorAll('#tantanganSoal .answer');bs.forEach(b=>b.disabled=true);let ok=i===q.c;btn.classList.add(ok?'correct':'wrong');bs[q.c].classList.add('correct');if(ok)tambahSkor(10,'detective');answerLog.push({aktivitas:'Math Detective',nomor:challengeIndex+1,soal:q.q,jawabanDipilih:q.a[i],jawabanBenar:q.a[q.c],benar:ok,penjelasan:q.e});let f=document.getElementById('challengeFeedback');f.style.display='block';f.innerHTML=(ok?'🎉 Benar! +10 poin. ':'🌱 Belum tepat. ')+q.e;let n=document.createElement('button');n.style.marginTop='12px';n.textContent=challengeIndex<challenge.length-1?'Kasus berikutnya →':'Ulangi misi';n.onclick=()=>{challengeIndex=(challengeIndex+1)%challenge.length;tampilChallenge()};f.parentElement.appendChild(n)}tampilChallenge();
+
+function unduhWord(judul,isi){let file=judul.replace(/[^a-z0-9]+/gi,'_')+'_'+(nama||'Siswa').replace(/[^a-z0-9]+/gi,'_')+'.doc';let doc='<html><head><meta charset="utf-8"><style>@page{size:A4;margin:2cm}body{font-family:Arial,sans-serif;color:#24352d;font-size:10.5pt;line-height:1.45}h1,h2,h3{page-break-after:avoid}table{page-break-inside:auto}tr{page-break-inside:avoid;page-break-after:auto}th,td{word-wrap:break-word}p{margin:7px 0}</style></head><body style="font-family:Arial,sans-serif;margin:0"><h1 style="text-align:center;color:#174f3c">'+judul.replace(/_/g,' ')+'</h1>'+isi+'</body></html>';let blob=new Blob(['\\ufeff',doc],{type:'application/msword'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=file;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1200)}
+
+async function kirim(item){
+  try {
+    const data = JSON.parse(localStorage.getItem('petualanganPeluangRekap') || '[]');
+    data.push(item);
+    localStorage.setItem('petualanganPeluangRekap', JSON.stringify(data));
+    return true;
+  } catch(e) { return false; }
+}
+
+function amanHTML(teks){return String(teks??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/\n/g,'<br>')}
+
+async function submitAktivitas(judul,nilai,target,detail){
+
+ if(!nama){alert('Isi nama terlebih dahulu di Beranda.');buka('home');return}
+
+ let waktu=new Date().toLocaleString('id-ID'),aktivitasLog=answerLog.filter(x=>x.aktivitas===judul),riwayatSoal=aktivitasLog.map(x=>({nomor:x.nomor,soal:x.soal,jawabanDipilih:x.jawabanDipilih,jawabanBenar:x.jawabanBenar,benar:x.benar,penjelasan:x.penjelasan,hasilDadu:x.hasilDadu})),detailLengkap=JSON.stringify({ringkasan:detail,soalDanJawaban:riwayatSoal},null,2),item={nama,aktivitas:judul,skorAktivitas:nilai,skorTotal:skor,detail:detailLengkap,waktu};
+
+ let tombol=document.querySelector('#'+target+' button');if(tombol){tombol.disabled=true;tombol.textContent='Menyimpan...'}
+
+ let ok=await kirim(item);
+
+ document.getElementById(target).innerHTML='<div class="'+(ok?'success':'notice')+'">'+(ok?'🌟 Hebat! Hasil '+amanHTML(judul)+' sudah tersimpan di rekap guru. Terus semangat, setiap langkah membuatmu makin paham!':'Belum terkirim, ya. Coba lagi—kamu pasti bisa! Pastikan browser mengizinkan penyimpanan lokal.')+'</div>';
+
+ if(tombol){tombol.disabled=false;tombol.textContent='Submit hasil'}if(ok)ambilSkor()
+
+}
+
+async function submitRefleksi(){
+
+ if(!nama){alert('Isi nama terlebih dahulu di Beranda.');buka('home');return}
+
+ let labels=['Hal yang sudah saya pahami','Hal yang masih membingungkan','Hasil pengamatan dadu','Strategi belajar yang membantu','Kesimpulan','Target belajar selanjutnya'],vals=labels.map((x,i)=>document.getElementById('r'+(i+1)).value.trim());
+
+ if(vals.some(x=>!x)){document.getElementById('hasilRefleksi').innerHTML='<div class="notice">Lengkapi semua bagian refleksi terlebih dahulu.</div>';return}
+
+ let detail=labels.map((x,i)=>x+': '+vals[i]).join(' | '),waktu=new Date().toLocaleString('id-ID'),item={nama,aktivitas:'Refleksi Pembelajaran',skorAktivitas:0,skorTotal:skor,detail,waktu};let ok=await kirim(item);
+
+ document.getElementById('hasilRefleksi').innerHTML='<div class="'+(ok?'success':'notice')+'">'+(ok?'✨ Refleksimu berhasil tersimpan! Terima kasih sudah meluangkan waktu untuk belajar dan mengenali perkembangan dirimu.':'Refleksi belum terkirim. Tetap semangat, lalu coba lagi setelah memastikan server Python berjalan.')+'</div>';if(ok)ambilSkor()
+
+}
+
+let sedangMemuatRekap=false;
+
+async function ambilSkor(tampilkanStatus=false){
+
+ if(sedangMemuatRekap)return;
+
+ sedangMemuatRekap=true;
+
+ const el=document.getElementById('dataGuru'),waktuEl=document.getElementById('waktuRefresh'),tombolRefresh=document.getElementById('refreshRekapBtn');
+
+ if(tampilkanStatus){el.innerHTML='<p class="muted">Memuat rekap terbaru…</p>';if(tombolRefresh){tombolRefresh.disabled=true;tombolRefresh.textContent='Memuat rekap…'}}
+
+ try{
+
+  let data=JSON.parse(localStorage.getItem('petualanganPeluangRekap') || '[]');
+
+  if(waktuEl)waktuEl.textContent='Terakhir diperbarui: '+new Date().toLocaleTimeString('id-ID');
+
+  if(!data.length){el.innerHTML='<p class="muted">Belum ada hasil yang disubmit. Setelah siswa menekan tombol Submit hasil pada aktivitas, data akan muncul otomatis di sini.</p>';return}
+
+  let siswa=new Set(data.map(x=>x.nama)).size;
+
+  el.innerHTML='<p class="muted">Tercatat '+data.length+' submit aktivitas dari '+siswa+' siswa. Rekap diperbarui otomatis setiap 3 detik saat halaman ini terbuka.</p><div style="overflow:auto"><table><tr><th>Nama</th><th>Aktivitas</th><th>Skor aktivitas</th><th>Total poin saat submit</th><th>Waktu submit</th><th>Detail soal/refleksi</th></tr>'+data.slice().reverse().map(x=>'<tr><td>'+amanHTML(x.nama)+'</td><td>'+amanHTML(x.aktivitas)+'</td><td>'+x.skorAktivitas+'</td><td>'+x.skorTotal+'</td><td>'+amanHTML(x.waktu)+'</td><td><details><summary>Lihat detail</summary><pre style="white-space:pre-wrap;max-width:420px">'+amanHTML(x.detail)+'</pre></details></td></tr>').join('')+'</table></div>';
+
+ }catch(e){if(waktuEl)waktuEl.textContent='Pembaruan gagal. Coba tekan Refresh rekap lagi.';el.innerHTML='<p class="notice">Rekap belum bisa dimuat. Penyimpanan browser belum dapat dibaca. Coba muat ulang halaman ini.</p>'}
+
+ finally{sedangMemuatRekap=false;if(tombolRefresh){tombolRefresh.disabled=false;tombolRefresh.textContent='↻ Refresh rekap sekarang'}}
+
+}
+
+async function mulaiSesiBaru(){
+
+ if(!confirm('Mulai sesi baru? Semua rekap lama akan dihapus permanen dari komputer guru dan laporan Word berikutnya hanya memuat hasil baru. Pastikan rekap lama sudah diunduh jika masih diperlukan.'))return;
+
+ try{
+
+  localStorage.removeItem('petualanganPeluangRekap');
+
+  document.getElementById('dataGuru').innerHTML='<p class="success">Sesi baru dimulai. Rekap lama telah dihapus. Hasil submit berikutnya akan masuk sebagai rekap baru.</p>';
+
+  document.getElementById('waktuRefresh').textContent='Rekap dikosongkan: '+new Date().toLocaleTimeString('id-ID');
+
+  alert('Sesi baru siap. Rekap lama sudah dihapus.');
+
+ }catch(e){alert('Rekap lama belum berhasil dihapus. Pastikan server Python masih berjalan, lalu coba lagi.')}
+
+}
+
+async function unduhRekapWord(){
+
+ try{
+
+  const data=JSON.parse(localStorage.getItem('petualanganPeluangRekap') || '[]');
+
+  if(!data.length){alert('Belum ada hasil submit yang dapat direkap.');return}
+
+  const namaSiswa=[...new Set(data.map(x=>x.nama))];
+
+  const tanggal=amanHTML(new Date().toLocaleString('id-ID'));
+
+  const gaya='font-family:Arial,sans-serif;font-size:10.5pt;color:#24352d;';
+
+  const tableStyle='width:100%;border-collapse:collapse;margin:10px 0 18px 0;';
+
+  const thStyle='border:1px solid #9bb8a4;background:#e7f2e9;padding:8px;text-align:left;font-size:9.5pt;';
+
+  const tdStyle='border:1px solid #b9cbbf;padding:8px;vertical-align:top;font-size:9.5pt;';
+
+  let isi='<div style="text-align:center;margin-top:90px;"><p style="font-size:14pt;color:#26734d;font-weight:bold;letter-spacing:2px;">LAPORAN PEMBELAJARAN</p><h1 style="font-size:27pt;color:#174f3c;margin:18px 0;">REKAP HASIL SISWA</h1><h2 style="font-size:17pt;color:#32845c;">Petualangan Peluang</h2><p style="font-size:12pt;">Matematika · Kelas VIII</p><p style="margin-top:60px;">Dokumen rekap hasil aktivitas dan refleksi siswa</p></div><br clear="all" style="page-break-before:always" />';
+
+  isi+='<h1 style="color:#174f3c;border-bottom:2px solid #32845c;padding-bottom:8px;">Ringkasan Rekap</h1><p><b>Tanggal unduh:</b> '+tanggal+'</p>';
+
+  isi+='<table style="'+tableStyle+'"><tr><th style="'+thStyle+'">Jumlah siswa</th><th style="'+thStyle+'">Jumlah submit aktivitas</th></tr><tr><td style="'+tdStyle+'">'+namaSiswa.length+'</td><td style="'+tdStyle+'">'+data.length+'</td></tr></table>';
+
+  isi+='<p>Dokumen ini merangkum aktivitas yang telah disubmit ke dashboard guru. Skor total merupakan jumlah poin yang tercatat saat aktivitas disubmit.</p>';
+
+  isi+='<h2 style="color:#26734d;">Ringkasan Seluruh Submit</h2><table style="'+tableStyle+'"><tr><th style="'+thStyle+'">No.</th><th style="'+thStyle+'">Nama siswa</th><th style="'+thStyle+'">Aktivitas</th><th style="'+thStyle+'">Skor aktivitas</th><th style="'+thStyle+'">Total poin</th><th style="'+thStyle+'">Waktu submit</th></tr>';
+
+  data.forEach((x,i)=>{isi+='<tr><td style="'+tdStyle+'">'+(i+1)+'</td><td style="'+tdStyle+'">'+amanHTML(x.nama)+'</td><td style="'+tdStyle+'">'+amanHTML(x.aktivitas)+'</td><td style="'+tdStyle+'">'+amanHTML(x.skorAktivitas)+'</td><td style="'+tdStyle+'">'+amanHTML(x.skorTotal)+'</td><td style="'+tdStyle+'">'+amanHTML(x.waktu)+'</td></tr>'});
+
+  isi+='</table>';
+
+  namaSiswa.forEach((n,idx)=>{
+
+   const hasilSiswa=data.filter(x=>x.nama===n);
+
+   isi+='<br clear="all" style="page-break-before:always" /><h1 style="color:#174f3c;border-bottom:2px solid #32845c;padding-bottom:8px;">'+(idx+1)+'. '+amanHTML(n)+'</h1>';
+
+   isi+='<p><b>Jumlah aktivitas yang disubmit:</b> '+hasilSiswa.length+'</p>';
+
+   isi+='<table style="'+tableStyle+'"><tr><th style="'+thStyle+'">Aktivitas</th><th style="'+thStyle+'">Skor aktivitas</th><th style="'+thStyle+'">Total poin saat submit</th><th style="'+thStyle+'">Waktu submit</th></tr>';
+
+   hasilSiswa.forEach(x=>{isi+='<tr><td style="'+tdStyle+'">'+amanHTML(x.aktivitas)+'</td><td style="'+tdStyle+'">'+amanHTML(x.skorAktivitas)+'</td><td style="'+tdStyle+'">'+amanHTML(x.skorTotal)+'</td><td style="'+tdStyle+'">'+amanHTML(x.waktu)+'</td></tr>'});
+
+   isi+='</table>';
+
+   hasilSiswa.forEach(x=>{
+
+    isi+='<h2 style="color:#26734d;margin-top:22px;">'+amanHTML(x.aktivitas)+'</h2><p><b>Skor aktivitas:</b> '+amanHTML(x.skorAktivitas)+' &nbsp; | &nbsp; <b>Total poin saat submit:</b> '+amanHTML(x.skorTotal)+'</p>';
+
+    let parsed=null;try{parsed=JSON.parse(x.detail)}catch(e){}
+
+    if(parsed && Array.isArray(parsed.soalDanJawaban) && parsed.soalDanJawaban.length){
+
+     isi+='<table style="'+tableStyle+'"><tr><th style="'+thStyle+'">No.</th><th style="'+thStyle+'">Soal</th><th style="'+thStyle+'">Jawaban siswa</th><th style="'+thStyle+'">Jawaban benar</th><th style="'+thStyle+'">Hasil</th><th style="'+thStyle+'">Pembahasan</th></tr>';
+
+     parsed.soalDanJawaban.forEach(q=>{isi+='<tr><td style="'+tdStyle+'">'+amanHTML(q.nomor??'—')+'</td><td style="'+tdStyle+'">'+amanHTML(q.soal||'—')+'</td><td style="'+tdStyle+'">'+amanHTML(q.jawabanDipilih||'—')+'</td><td style="'+tdStyle+'">'+amanHTML(q.jawabanBenar||'—')+'</td><td style="'+tdStyle+'">'+(q.benar?'Benar':'Perlu ditinjau')+'</td><td style="'+tdStyle+'">'+amanHTML(q.penjelasan||'—')+'</td></tr>'});
+
+     isi+='</table>';
+
+     if(parsed.ringkasan)isi+='<p><b>Ringkasan aktivitas:</b> '+amanHTML(parsed.ringkasan)+'</p>';
+
+    }else if(parsed && parsed.ringkasan){
+
+     isi+='<p><b>Ringkasan aktivitas:</b> '+amanHTML(parsed.ringkasan)+'</p>';
+
+    }else if(x.aktivitas==='Refleksi Pembelajaran'){
+
+     const bagian=String(x.detail||'').split(' | ');
+
+     isi+='<table style="'+tableStyle+'"><tr><th style="'+thStyle+'">Bagian refleksi</th><th style="'+thStyle+'">Jawaban siswa</th></tr>';
+
+     bagian.forEach(b=>{const k=b.indexOf(':');isi+='<tr><td style="'+tdStyle+'">'+amanHTML(k>=0?b.slice(0,k):'Refleksi')+'</td><td style="'+tdStyle+'">'+amanHTML(k>=0?b.slice(k+1).trim():b)+'</td></tr>'});
+
+     isi+='</table>';
+
+    }else{
+
+     isi+='<p>'+amanHTML(x.detail||'Belum ada detail tambahan.')+'</p>';
+
+    }
+
+   });
+
+  });
+
+  isi+='<br clear="all" style="page-break-before:always" /><p style="text-align:center;color:#32845c;font-size:12pt;font-weight:bold;">Terus belajar, berani mencoba, dan rayakan setiap kemajuan. 🌱</p><p style="text-align:center;font-size:9pt;color:#666;">Petualangan Peluang · Matematika Kelas VIII</p>';
+
+  unduhWord('Rekap_Hasil_Petualangan_Peluang',isi);
+
+ }catch(e){alert('Rekap belum dapat diunduh. Coba muat ulang halaman lalu ulangi.')}
+
+}
+
+// Dashboard guru memeriksa hasil terbaru secara berkala tanpa perlu klik Refresh.
+
+let intervalRekapGuru=null;
+
+function mulaiPantauRekap(){
+
+  if(intervalRekapGuru) clearInterval(intervalRekapGuru);
+
+  intervalRekapGuru=setInterval(()=>{
+
+    const halamanGuru=document.getElementById('guru');
+
+    if(halamanGuru && halamanGuru.classList.contains('active')) ambilSkor();
+
+  },3000);
+
+}
+
+mulaiPantauRekap();
+
+// Saat siswa meninggalkan halaman, hapus nama dari sesi browser. Hasil yang sudah disubmit tetap tersimpan di server untuk rekap guru.
+
+window\.addEventListener('pagehide',()=>{sessionStorage.removeItem('namaPeluang')});
+
+window\.addEventListener('pageshow',(event)=>{if(event.persisted)window\.location.reload()});
+
+</script></body></html>
